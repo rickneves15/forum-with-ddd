@@ -17,7 +17,8 @@
 			"!.vercel",
 			"!coverage",
 			"!.env",
-			"!.env.*"
+			"!.env.*",
+			"!vite.config.ts"
 		]
 	},
 	"formatter": {
@@ -29,7 +30,10 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"complexity": {
+				"noUselessConstructor": "off"
+			}
 		}
 	},
 	"javascript": {
