@@ -31,15 +31,12 @@ describe('Fetch Answer Comments', () => {
       })
     )
 
-    const { answersComments } = await sut.execute({
+    const result = await sut.execute({
       answerId: 'answer-id',
       page: 1,
     })
 
-    expect(answersComments).toHaveLength(3)
-    expect(answersComments).toEqual(
-      expect.arrayContaining([expect.any(Object)])
-    )
+    expect(result.value?.answersComments).toHaveLength(3)
   })
 
   test('it should be able to fetch paginated answer comments', async () => {
@@ -51,11 +48,11 @@ describe('Fetch Answer Comments', () => {
       )
     }
 
-    const { answersComments } = await sut.execute({
+    const result = await sut.execute({
       answerId: 'answer-id',
       page: 2,
     })
 
-    expect(answersComments).toHaveLength(2)
+    expect(result.value?.answersComments).toHaveLength(2)
   })
 })

@@ -1,3 +1,4 @@
+import { type Either, right } from '~/core/either'
 import type { QuestionCommentsRepository } from '~/domain/forum/application/repositories/question-comments-repository'
 import type { QuestionComment } from '~/domain/forum/enterprise/entities/question-comment'
 
@@ -6,9 +7,12 @@ interface FetchQuestionCommentsUseCaseRequest {
   page: number
 }
 
-interface FetchQuestionCommentsUseCaseResponse {
-  questionsComments: QuestionComment[]
-}
+type FetchQuestionCommentsUseCaseResponse = Either<
+  null,
+  {
+    questionsComments: QuestionComment[]
+  }
+>
 
 export class FetchQuestionCommentsUseCase {
   constructor(private questionCommentsRepository: QuestionCommentsRepository) {}
@@ -22,8 +26,6 @@ export class FetchQuestionCommentsUseCase {
         page,
       })
 
-    return {
-      questionsComments,
-    }
+    return right({ questionsComments })
   }
 }
