@@ -12,4 +12,8 @@ export class UniqueEntityID {
   constructor(value?: string) {
     this.value = value ?? crypto.randomUUID()
   }
+
+  equals(id: UniqueEntityID) {
+    return id.value === this.value
+  }
 }
