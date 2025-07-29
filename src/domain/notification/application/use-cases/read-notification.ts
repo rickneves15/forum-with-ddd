@@ -4,12 +4,12 @@ import { ResourceNotFoundError } from '~/core/errors/errors/resource-not-found-e
 import type { NotificationsRepository } from '~/domain/notification/application/repositories/notifications-repository'
 import type { Notification } from '~/domain/notification/enterprise/entities/notification'
 
-type ReadNotificationUseCaseRequest = {
+export interface ReadNotificationUseCaseRequest {
   recipientId: string
   notificationId: string
 }
 
-type ReadNotificationUseCaseResponse = Either<
+export type ReadNotificationUseCaseResponse = Either<
   ResourceNotFoundError | NotAllowedError,
   {
     notification: Notification
