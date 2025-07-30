@@ -1,13 +1,10 @@
 services:
   postgres:
-    container_name: nest-clean-pg
-    image: postgres
+    container_name: pg
+    image: bitnami/postgresql
     ports:
-      - 5432:5432
+      - '5432:5432'
     environment:
-      POSTGRES_USER: docker
-      POSTGRES_PASSWORD: docker
-      POSTGRES_DB: forum-with-ddd
-      PGDATA: /.docker/data/postgres
-    volumes:
-      - ./.docker/data/pg:/data/postgres
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=forum_with_ddd 
